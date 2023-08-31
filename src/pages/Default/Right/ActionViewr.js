@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 import { useEventContext } from '../../../Context/hooks';
 
@@ -14,9 +14,9 @@ const ActionViewer = () => {
     setTimeout(() => dispatch({ type: 'animationDots' }), 1000);
   }
 
-  const HandleRedirectToComment = ()=>{
-    navigate('test');
-  }
+  const HandleRedirectToComment = () => {
+    navigate('/user-id/video/id-video');
+  };
   return (
     <>
       <div className="res-user-video">

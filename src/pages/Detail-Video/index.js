@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar';
 import './index.scss';
 
-const VolumeSlider = () => {
+const DetailVideo = () => {
   const [state, dispatch] = useEventContext();
   const [focusCommand, setFocusCommand] = useState(false);
   const [hover, setHover] = useState(false);
@@ -673,8 +673,8 @@ const VolumeSlider = () => {
   );
 };
 
-export const LayoutVolumeSlider = ({ children }) => {
+export const LayoutDetailVideo = ({ children }) => {
   return <>{children}</>;
 };
 
-export default VolumeSlider;
+export default DetailVideo;

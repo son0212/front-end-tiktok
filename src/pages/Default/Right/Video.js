@@ -29,7 +29,7 @@ const Video = () => {
     // luôn luôn được gọi trong lần đầu tiền click
     if (!clickTimer) {
       clickTimer = setTimeout(() => {
-        navigate('/test');
+        navigate('/user-id/video/id-video');
         clearTimeout(clickTimer);
         clickTimer = null;
       }, 500);

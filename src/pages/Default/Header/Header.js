@@ -1,7 +1,16 @@
+import { useState } from 'react';
 import './Header.scss';
 import SearchBar from '../../../components/SearchBar';
 
 function Header() {
+  const HandleHoverOpen = () => {
+    setHover(true);
+  };
+  const HandleHoverClose = () => {
+    setHover(false);
+  };
+  const [verify, setVerify] = useState(false);
+  const [hover, setHover] = useState(false);
   return (
     <div className="father-of-header">
       <div className="header">
@@ -18,14 +27,40 @@ function Header() {
               <span>Tải lên</span>
             </div>
           </div>
-          <div className="messenger">
-            {/* wrap link here */}
-            <img alt="Tin nhắn" tilte="Tin nhắn" src="/logos/messenger.png" />
-          </div>
-          <div className="mail-box">
-            <img alt="Hòm thư" title="Hòm thư" src="/logos/mail-box.png" />
-          </div>
-          <div className="avatar"></div>
+          {verify ? (
+            <>
+              <div className="messenger">
+                {/* wrap link here */}
+                <img alt="Tin nhắn" tilte="Tin nhắn" src="/logos/messenger.png" />
+              </div>
+              <div className="mail-box">
+                <img alt="Hòm thư" title="Hòm thư" src="/logos/mail-box.png" />
+              </div>
+              <div className="avatar"></div>
+            </>
+          ) : (
+            <>
+              <div className="btn-login">Đăng nhập</div>
+              <div className="more-option" onMouseEnter={HandleHoverOpen} onMouseLeave={HandleHoverClose}>
+                {hover ? (
+                  <div className="value-options">
+                    <div className="option">Ngôn ngữ</div>
+                    <div className="option">Phím tắt trên bàn phím </div>
+                    <div className="option">Trợ giúp</div>
+                    <div className="option">
+                      <div className="content-option">chế độ tối</div>
+                      <label className="turn-on-or-turn-off-option">
+                        <input type="checkbox" />
+                        <span className="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

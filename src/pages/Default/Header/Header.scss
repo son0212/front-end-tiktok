@@ -1,4 +1,7 @@
 .father-of-header {
+  //---------------------------
+  --size-checkBox: 9px;
+  //---------------------------
   right: 0px;
   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
   height: 60px;
@@ -8,7 +11,6 @@
   -webkit-box-align: center;
   background: rgba(255, 255, 255, 1);
   z-index: 1000;
-
   .header {
     padding: 0.2% 0;
     display: flex;
@@ -37,6 +39,7 @@
         margin-left: 0px;
         position: relative;
         height: 36px;
+
         div {
           min-width: 110px;
           padding: 0 16px;
@@ -60,6 +63,10 @@
             font-size: 16px;
             line-height: 24px;
           }
+        }
+        div:hover {
+          cursor: pointer;
+          background-color: rgb(246, 244, 244);
         }
       }
       .messenger {
@@ -94,6 +101,96 @@
         background-size: cover;
         border-radius: 50%;
         cursor: pointer;
+      }
+      .btn-login {
+        margin-left: 22px;
+        background: red;
+        font-size: 21px;
+        padding: 2px;
+        border-radius: 8%;
+        color: white;
+      }
+      .more-option {
+        width: 20px;
+        height: 20px;
+        margin-left: 16px;
+        background-size: contain;
+        background-image: url('http://localhost:3000/logos/more-options.svg');
+        position: relative;
+        .value-options {
+          position: absolute;
+          top: 100%;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 24px;
+          width: 150px;
+          .option {
+            background-color: #f0efef;
+            border-radius: 3%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            label {
+              position: relative;
+              display: inline-block; /* cho nó làm bố giới hạn độ cao và chiều rộng không cho con nó vượt qua*/
+              width: calc((var(--size-checkBox) * 4) + (var(--size-checkBox) / 3));
+              height: calc((var(--size-checkBox) * 2) + (var(--size-checkBox) / 3));
+
+              input {
+                opacity: 0; /* ẩn thẻ input đi và input bằng 0*/
+                width: 0;
+                height: 0;
+              }
+
+              .slider {
+                position: absolute; /* cho nó làm con*/
+                cursor: pointer; /* thằng span làm hết*/
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc; /* màu khi tắt đi*/
+                -webkit-transition: 0.4s;
+                transition: 0.4s; /* thời gian hiệu ứng xảy ra*/
+              }
+
+              .slider:before {
+                position: absolute; /* cho nó làm con*/
+                content: ''; /* không chèn bất cứ nội dung gì*/
+                height: calc(var(--size-checkBox) * 2); /* nhưng set chiều rộng chiều cao của vật thể được thêm*/
+                width: calc(var(--size-checkBox) * 2);
+                left: calc(var(--size-checkBox) / 3);
+                bottom: calc(var(--size-checkBox) / 3); /* căn khoảng cách trên dưới cho vật thể*/
+                background-color: white;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+              }
+
+              input:checked + .slider {
+                background-color: rgb(89, 89, 246); /* màu nền sau khi bi click*/
+              }
+
+              input:focus + .slider {
+                box-shadow: 0 0 1px #2196f3; /*bóng đổ sau khi bị click*/
+              }
+
+              input:checked + .slider:before {
+                -webkit-transform: translateX(calc(var(--size-checkBox) * 2));
+                -ms-transform: translateX(calc(var(--size-checkBox) * 2));
+                transform: translateX(calc(var(--size-checkBox) * 2));
+              }
+
+              /* Rounded sliders */
+              .slider.round {
+                border-radius: 34px;
+              }
+
+              .slider.round:before {
+                border-radius: 50%;
+              }
+            }
+          }
+        }
       }
     }
   }
